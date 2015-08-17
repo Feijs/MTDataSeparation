@@ -1,0 +1,32 @@
+{
+    "name": "feijs/mt-separation",
+    "description": "Tests for data separation in Laravel Multi-Tenant package",
+    "authors": [
+        {
+            "name": "Mike Feijs",
+            "email": "mike@feijs.nl"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*",
+        "aura-is-here/laravel-multi-tenant": "dev-feijs-issue62"
+    },
+    "require-dev": {
+        "mockery/mockery": "~0.9",
+        "phpunit/phpunit": "~4.0",
+        "laravel/framework": "4.2.*",
+        "orchestra/testbench": "~2.2"
+    },
+    "autoload": {
+        "psr-4": {
+        	"Feijs\\MTDataSeparation\\": "src/Feijs/MTDataSeparation/"
+        }
+    },
+    "repositories": [
+    	{
+            "type": "vcs",
+            "url": "https://github.com/Feijs/laravel-multi-tenant"
+        }
+    ]
+}
