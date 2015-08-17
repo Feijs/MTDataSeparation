@@ -14,7 +14,6 @@ abstract class DSTestCase extends TestBenchTestCase
     protected function getPackageProviders()
     {
         return array(
-        	//'Feijs\MTDataSeparation\MTDataSeparationServiceProvider',
         	'AuraIsHere\LaravelMultiTenant\LaravelMultiTenantServiceProvider'
         );
     }
