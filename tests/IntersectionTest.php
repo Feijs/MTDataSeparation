@@ -40,7 +40,7 @@ class IntersectionTest extends DSTestCase
 				$this->setTenant($tenant);
 			
 				$result_builder = $this->{"nonIntersectQuery{$i}"}();		
-				$result_set = $result_builder->lists('id');
+				$result_set = $result_builder->lists('id')->toArray();
 
 				$this->assertNotEmpty($result_set, "Query {$i} returned an empty result. Please check table is seeded");
 

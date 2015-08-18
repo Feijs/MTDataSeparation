@@ -1,7 +1,7 @@
 <?php namespace Feijs\MTDataSeparation;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletingTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use AuraIsHere\LaravelMultiTenant\Traits\TenantScopedModelTrait;
 
 /**
@@ -13,7 +13,7 @@ use AuraIsHere\LaravelMultiTenant\Traits\TenantScopedModelTrait;
  */
 class ModelWithTenantAndSoftDelete extends Model
 {
-	use SoftDeletingTrait;
+	use SoftDeletes;
 	use TenantScopedModelTrait;
 }
  

@@ -53,14 +53,14 @@ abstract class DSTestCase extends TestBenchTestCase
 	        'database' => ':memory:',
 	        'prefix'   => '',
 	    ]);
-	    $app['config']->set('laravel-multi-tenant::default_tenant_columns', 'tenant_id');
+	    $app['config']->set('tenant.default_tenant_columns', 'tenant_id');
 	}
 
 	protected function runMigrations()
 	{
-		$this->artisan->call('migrate', [
+		$this->artisan('migrate', [
 		    '--database' => 'testbench',
-		    '--path' => '/../migrations',
+		    '--realpath' => realpath(__DIR__.'/../migrations'),
 		]);
 	}
 
@@ -71,7 +71,6 @@ abstract class DSTestCase extends TestBenchTestCase
     {
     	parent::setUp();
 
-        $this->artisan = $this->app->make('artisan');
         $this->runMigrations();
     }
 
