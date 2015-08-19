@@ -1,6 +1,5 @@
 <?php
 
-use Mockery as m;
 use Feijs\MTDataSeparation\ModelWithTenant;
 use Feijs\MTDataSeparation\ModelWithoutTenant;
 use Feijs\MTDataSeparation\ModelWithTenantAndSoftDelete;
@@ -29,6 +28,9 @@ class IntersectionTest extends DSTestCase
         $this->tenants = range(1, $this->num_tenants);
     }
 
+	/**
+     * @runInSeparateProcess
+     */
 	public function testNonIntersectingResults()
 	{
 		for($i = 1; $i <= $this->non_intersect_queries; $i++)
@@ -80,20 +82,24 @@ class IntersectionTest extends DSTestCase
 		return $builder->withTrashed();
 	}
 
+	/**
+     * @runInSeparateProcess
+     */
 	public function testIntersectingResults()
 	{
 		for($j = 1; $j <= $this->intersect_queries; $j++)
 		{
-			$total = $this->{"intersectQuery{$j}"}();	
+			$this->setTenant(0);
+			$total = $this->{"intersectQuery{$j}"}()->get()->toArray();	
 
 			foreach($this->tenants as $tenant)
 			{
 				$this->setTenant($tenant);
-			
-				$result_set = $this->{"intersectQuery{$j}"}();		
+				$result_set = $this->{"intersectQuery{$j}"}()->get()->toArray();		
 
 				/* Assert array equality (but not order) */
 				$this->assertNotEmpty($result_set, "Query {$j} returned an empty result. Please check table is seeded");
+				$this->assertEquals(count($total), count($result_set)); 
 				$this->assertEquals($total, $result_set, "\$canonicalize = true", 0.0, 10, true);
 			}
 		}

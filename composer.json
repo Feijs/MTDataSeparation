@@ -8,9 +8,10 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=5.5.0",
         "illuminate/support": "4.2.*",
-        "aura-is-here/laravel-multi-tenant": "dev-feijs-issue62"
+        "aura-is-here/laravel-multi-tenant": "dev-feijs-issue62",
+        "sofa/laravel-global-scope": "dev-laravel-4.2"
     },
     "require-dev": {
         "mockery/mockery": "~0.9",
@@ -27,6 +28,10 @@
     	{
             "type": "vcs",
             "url": "https://github.com/Feijs/laravel-multi-tenant"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/Feijs/laravel-global-scope"
         }
     ]
 }
